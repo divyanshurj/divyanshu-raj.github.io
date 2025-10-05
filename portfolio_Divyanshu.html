@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyanshu Raj - CS Student & Code Enthusiast</title>
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --secondary: #6D28D9;
+            --accent: #8B5CF6;
+            --dark: #1F2937;
+            --light: #FDF4FF;
+            --warm: #FEF3C7;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #FDF4FF 0%, #FEF3C7 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header - More Friendly */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(124, 58, 237, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header:hover {
+            box-shadow: 0 5px 25px rgba(124, 58, 237, 0.15);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(124, 58, 237, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section - More Personal */
+        .hero {
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #8B5CF6 100%);
+            color: white;
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .hero-location {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 8px;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Projects Section - More Fun */
+        .projects {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            color: var(--dark);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .project-card {
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            position: relative;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: var(--accent);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-tag:hover {
+            transform: scale(1.1);
+            background: var(--primary);
+        }
+        
+        /* About Section - More Personal */
+        .about {
+            padding: 100px 0;
+            background: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .profile-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            border: 4px solid white;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 25px 50px rgba(124, 58, 237, 0.3);
+        }
+        
+        .education {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        
+        .fun-fact {
+            background: var(--warm);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            border: 2px dashed var(--accent);
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.1);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-level {
+            background: #e5e7eb;
+            border-radius: 10px;
+            height: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark) 0%, #374151 100%);
+            color: white;
+        }
+        
+        .contact-info {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        /* Footer - More Friendly */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #374151 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        .social-links {
+            margin: 2rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px) scale(1.1);
+        }
+        
+        .waving-hand {
+            animation: wave 2s infinite;
+            display: inline-block;
+            transform-origin: 70% 70%;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .about-content { grid-template-columns: 1fr; }
+            .profile-img { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Divyanshu 👨‍💻</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">My Work</a></li>
+                    <li><a href="#learning">Journey</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Let's Talk!</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Hey there! <span class="waving-hand">👋</span> I'm Divyanshu</h1>
+            <div class="hero-subtitle">1st Year CS Student • Code Explorer • Future Tech Wizard</div>
+            <div class="hero-location">🎓 Gurukula Kangri University • 📍 Building dreams since 2024</div>
+            <p>Just a curious mind learning to speak computer and create magic with code!</p>
+            <a href="#projects" class="btn">See What I'm Building</a>
+            <a href="#learning" class="btn btn-outline">Follow My Journey</a>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Stuff I've Been Building 🛠️</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">💻 Console Adventures</div>
+                    <div class="project-content">
+                        <h3>My First Coding Steps</h3>
+                        <p>Those exciting moments when your code actually works! Simple console apps that taught me programming isn't magic... well, maybe a little ✨</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Logic</span>
+                            <span class="tech-tag">Patience 😅</span>
+                        </div>
+                        <p><strong>Fun stuff:</strong> Calculator that sometimes works, number games, and my first "Hello World!" that took 2 hours to debug</p>
+                        <a href="#" class="btn" style="background: var(--primary); color: white;">Peek at My Code</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">🚧 Work in Progress</div>
+                    <div class="project-content">
+                        <h3>Next Big Thing (Hopefully!)</h3>
+                        <p>Currently brainstorming my next project. Probably something that solves a problem I don't have yet, but it'll be cool! 🤔</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Ideas 💡</span>
+                            <span class="tech-tag">Coffee ☕</span>
+                            <span class="tech-tag">YouTube Tutorials</span>
+                        </div>
+                        <p><strong>Current Status:</strong> Staring at blank screen, drinking coffee, having brilliant ideas at 3 AM</p>
+                        <a href="#contact" class="btn" style="background: var(--primary); color: white;">Send Ideas My Way!</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">📚 College Life</div>
+                    <div class="project-content">
+                        <h3>University Adventures</h3>
+                        <p>All those assignments that kept me up late but actually taught me something! From basic programs to "why is this not working?!" moments.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">C++</span>
+                            <span class="tech-tag">C</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Google Fu</span>
+                        </div>
+                        <p><strong>Real talk:</strong> Learning that programming is 10% writing code and 90% fixing it</p>
+                        <a href="#learning" class="btn" style="background: var(--primary); color: white;">My Learning Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Getting to Know Me 🎯</h2>
+            <div class="about-content">
+                <div>
+                    <img src="https://i.ibb.co/zVMmGx1S/divyanshu.jpg" alt="Divyanshu Raj - CS Student" class="profile-img">
+                </div>
+                <div>
+                    <h3>Hi! I'm Divyanshu - Your Friendly Neighborhood Code Learner</h3>
+                    <p>I'm that guy who gets excited when a program finally runs without errors! Currently navigating my first year of computer science while trying to figure out if I want to be the next Zuckerberg or just make cool stuff. 🚀</p>
+                    
+                    <p>When I'm not battling with code, you'll probably find me binge-watching tech tutorials, wondering why my code works on the third try, or just enjoying college life with friends.</p>
+                    
+                    <div class="education">
+                        <h4>🎓 My Education Journey</h4>
+                        <p><strong>Gurukula Kangri University</strong> - Where the magic (and all-nighters) happen!</p>
+                        <p>B.Tech Computer Science (2024-2029) - Currently: Surviving 1st Semester 😄</p>
+                        <p><em>"One bug at a time!"</em> - My life motto</p>
+                    </div>
+                    
+                    <div class="fun-fact">
+                        <h4>💡 Fun Fact</h4>
+                        <p>I once spent 4 hours debugging only to find I missed a semicolon. True story! 🤦‍♂️ But hey, that's how we learn, right?</p>
+                    </div>
+                    
+                    <a href="#contact" class="btn" style="background: var(--primary); color: white; margin-top: 1rem;">👉 Let's Chat!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Toolkit 🛠️</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div>
+                        <p>C++ Basics</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
+                    </div>
+                    <div>
+                        <p>Python</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 60%"></div></div>
+                    </div>
+                    <div>
+                        <p>C Programming</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 65%"></div></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <div>
+                        <p>HTML</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 80%"></div></div>
+                    </div>
+                    <div>
+                        <p>CSS</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 70%"></div></div>
+                    </div>
+                    <div>
+                        <p>JavaScript</p>
+                        <div class="skill-level"><div class="skill-progress" style="width: 50%"></div></div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Tools & Concepts</h3>
+                    <p>Git & GitHub</p>
+                    <p>VS Code</p>
+                    <p>Problem Solving</p>
+                    <p>OOP Concepts</p>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Currently Learning</h3>
+                    <p>Data Structures</p>
+                    <p>Algorithms</p>
+                    <p>Advanced C++</p>
+                    <p>Web Development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect! 🤝</h2>
+            <div class="contact-info">
+                <p>I'm always open to discussing programming, learning opportunities, or potential collaborations.</p>
+                <p>Feel free to reach out if you want to code together or share knowledge!</p>
+            </div>
+            <div style="text-align: center;">
+                <a href="mailto:divyanshuraj2007@gmail.com" class="btn">📧 Send Email</a>
+                <a href="https://www.linkedin.com/in/divyanshu-raj-b28352377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="btn btn-outline">💼 Connect on LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Made with ❤️, ☕, and probably too much enthusiasm</p>
+            <p>&copy; 2025 Divyanshu Raj - Just a student trying to figure things out</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/divyanshu-raj-b28352377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" title="LinkedIn">💼</a>
+                <a href="#" title="GitHub">🐙</a>
+                <a href="#" title="LeetCode">⚡</a>
+                <a href="#" title="HackerRank">🔍</a>
+                <a href="mailto:divyanshuraj2007@gmail.com" title="Email">📧</a>
+            </div>
+            <p>Gurukula Kangri University • Currently: Writing code that sometimes works! 🎉</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add some fun interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Animate skill bars on scroll
+            const skillBars = document.querySelectorAll('.skill-progress');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.width = entry.target.style.width;
+                    }
+                });
+            });
+
+            skillBars.forEach(bar => observer.observe(bar));
+        });
+    </script>
+</body>
+</html>
